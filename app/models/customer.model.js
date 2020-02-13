@@ -17,3 +17,5 @@ Customer.getAllUsers = result => {
         result(null, res)
     });
 }
+
+module.exports = Customer
