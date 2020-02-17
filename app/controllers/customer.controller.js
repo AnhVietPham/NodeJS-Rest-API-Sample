@@ -32,3 +32,19 @@ exports.createNewUser = (req, res) => {
         }
     });
 }
+
+exports.findWithId = (req, res) => {
+    Customer.getCustomerWithId(req.params.customerId, (err, data) => {
+        if (err) {
+            if (err.kind == "not_found") {
+                res.status(404).send({
+                    message: 'Not found Customer with id ${req.params.customerId}.'
+                });
+            } else {
+                res.status(500).send({
+                    message: 'Error retrieving Customer with Id ' + req.params.customerId
+                });
+            }
+        } else res.send(data);
+    });
+}

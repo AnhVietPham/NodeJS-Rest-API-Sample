@@ -6,4 +6,7 @@ module.exports = app => {
 
     // Create a new Customer
     app.post("/customers", customers.createNewUser);
+
+    // Find customer with customerId
+    app.get("/customers/:customerId", customers.findWithId)
 }
