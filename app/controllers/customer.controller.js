@@ -38,7 +38,7 @@ exports.findWithId = (req, res) => {
         if (err) {
             if (err.kind == "not_found") {
                 res.status(404).send({
-                    message: 'Not found Customer with id ${req.params.customerId}.'
+                    message: 'Not found Customer with id ' + req.params.customerId
                 });
             } else {
                 res.status(500).send({
