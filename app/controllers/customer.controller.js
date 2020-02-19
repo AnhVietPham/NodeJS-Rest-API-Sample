@@ -48,3 +48,23 @@ exports.findWithId = (req, res) => {
         } else res.send(data);
     });
 }
+
+exports.deleteWithId = (req, res) => {
+    Customer.removeWithId(req.params.customerId, (err, data) => {
+        if (err) {
+            if (err.kind == "not_found") {
+                res.status(404).send({
+                    message: 'Not found Customer with id' + req.params.customerId
+                });
+            } else {
+                res.status(500).send({
+                    message: 'Could not delete Customer with Id' + req.params.customerId
+                });
+            }
+        } else {
+            res.send({
+                message: 'Customer was deleted successfully'
+            });
+        }
+    });
+};

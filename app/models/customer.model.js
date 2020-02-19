@@ -50,5 +50,25 @@ Customer.getCustomerWithId = (customerId, result) => {
     });
 }
 
+Customer.removeWithId = (customerId, result) => {
+    sql.query("delete from customers where id = ?", [customerId], (err, res) => {
+        if (err) {
+            console.log("error: ", err)
+            result(err, null)
+            return;
+        }
+
+        if (res.afftedRows == 0) {
+            result({
+                kind: "not_found"
+            }, null);
+            return;
+        }
+
+        console.log("Deleted customer with id", customerId);
+        result(null, res)
+    });
+}
+
 
 module.exports = Customer

@@ -9,4 +9,7 @@ module.exports = app => {
 
     // Find customer with customerId
     app.get("/customers/:customerId", customers.findWithId)
+
+    // Delete customer with customerId
+    app.delete("/customers/:customerId", customers.deleteWithId)
 }
