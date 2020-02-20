@@ -70,5 +70,16 @@ Customer.removeWithId = (customerId, result) => {
     });
 }
 
+Customer.removeAll = result => {
+    sql.query("delete from customers", (err, res) =>{
+        if(err){
+            console.log("error: ", err);
+            result(null,err);
+            return
+        }
+        result(null, res);
+    });
+}
+
 
 module.exports = Customer

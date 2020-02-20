@@ -12,4 +12,7 @@ module.exports = app => {
 
     // Delete customer with customerId
     app.delete("/customers/:customerId", customers.deleteWithId)
+
+    // Delete All Customers
+    app.delete("/customers", customers.deleteAll)
 }

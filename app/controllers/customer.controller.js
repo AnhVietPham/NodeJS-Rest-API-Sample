@@ -68,3 +68,17 @@ exports.deleteWithId = (req, res) => {
         }
     });
 };
+
+exports.deleteAll = (req, res) => {
+    Customer.removeAll((err, data) => {
+        if(err){
+            res.status(500).send({
+                message: err.message || "Some error occured while removing all customers."
+            })
+        }else{
+            res.send({
+                message: "All Customers were deleted successfully"
+            });
+        }
+    });
+}
